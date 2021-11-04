@@ -1,0 +1,18 @@
+---
+title: "Amy's Personal Website"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+Hello! Welcome to Amy's personal website! :) My name is Amy Liu and I'm currently a 2nd year MPH student in the Department of Biostatistics at the Columbia University Mailman School of Public Health. I'm also getting my certificate in Infectious Disease Epidemiology. I'm super excited to be up here in NY and learn with my fellow amazing peers! :) 
+
+If you are interested in my academic/professional background or in the projects I'm working on right now, please go to the **[Experience](experience.html)** section of this page! 
+
+
+### Professional Links
+To contact me, you can connect me via the ways below. You can also go to the navigation bar of this page to find my GitHub account, email, and LinkedIn!
+
+* [GitHub](http://github.com/amyfliu/)
+* [LinkedIn](https://www.linkedin.com/in/amyfliu/)
