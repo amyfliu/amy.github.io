@@ -1,0 +1,33 @@
+---
+title: "Experience/Background"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+### Academic Background
+Columbia University Mailman School of Public Health  
+Master of Public Health with a concentration in Biostatistics
+Certificate: Infectious Disease Epidemiology 
+
+University of Florida  
+Major: Biology
+Minors: Statistics, Computer Science 
+
+### Current Projects
+Research Associate - Axle Informatics
+
+
+Research Assistant - Columbia University Irving Medical Center
+
+### Certifications
+SAS Certified Specialist: Base Programming Using SAS 9.4
+[Click here for credential:](https://www.credly.com/badges/b93663d9-c754-4a9b-bc7f-09e8c5c2eadb)
+
+CITI Program - Human Subjects Protection Biomed
+[Click here for credential:](https://www.citiprogram.org/verify/?wa58b1418-bc7f-4d3f-95fc-ea1b0d79e8cc-42466970)
+
+
+### Publications 
+Rossetti,SC, et al. The CONCERN Clinical Decision Support Early Warning System: A Cluster Randomized Pragmatic Clinical Trial. [preprint]
