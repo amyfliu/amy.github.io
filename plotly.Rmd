@@ -1,0 +1,64 @@
+---
+title: "Plotly"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+Load the required packages. 
+```{r, message=FALSE}
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+```
+
+We'll will take a closer look at the NYC restaurant inspection data. Only keep the inspections with a grade of A, B, or C and with a score; take a random sample of 5000.
+```{r}
+data(rest_inspec)
+
+nyc_rest_inspect = 
+  rest_inspec %>% 
+  filter(grade %in% c("A","B","C")) %>% 
+  select(boro, critical_flag, score, zipcode, grade, dba) %>% 
+  drop_na(score, grade) %>% 
+  sample_n(5000) #takes random sample of 1000
+```
+
+### Boxplot  
+First, I'm interested in the distribution of scores for each borough so let's create a box plot to see how the scores compare (note: scores are converted into grades, where a lower score earns a higher grade). 
+```{r}
+nyc_rest_inspect %>% 
+  plot_ly(
+    x = ~boro, y = ~score, type = "box", color = ~boro)
+```
+Surpringly, the distributions of scores across the five boroughs are pretty consistent. However, there are a number of outliers. 
+
+
+### Barplot  
+I'm also interested in the likelihood of receiving a critical flag for each borough (according to the data dictionary, critical violations are those most likely to contribute to foodborne illness). Let's create a barplot to see this!  
+```{r}
+nyc_rest_inspect %>% 
+  group_by(boro) %>% 
+  summarize(rate_critical = sum(critical_flag == "Critical") / n()) %>% 
+  plot_ly(
+    x = ~boro, y = ~rate_critical, type = "bar", color = ~boro, colors = "viridis"
+  )
+```
+From the bar plot, we see that the likelihood of receiving a critical flag is about 50% for each of the borough. 
+
+### Scatterplot  
+Next, I want to look at the score and grading of "Joe's Shanghai" over the past few years (one of my favorite Chinese restaurant!) I'll create a scatter plot to look at this. 
+```{r}
+rest_inspec %>% 
+  filter(camis == 40548766) %>% 
+  drop_na(score, grade) %>%
+  mutate(text_label = str_c("Grade: ", grade, 
+                            "\nViolation code: ", violation_code)) %>% 
+  plot_ly(
+    y = ~score, x = ~inspection_date, type = "scatter", mode = "markers",
+    text = ~text_label
+  )
+```
+
+From this simple scatter plot, we see that the scores increased from 2014 (grade=A) to 2016(grade=C), meaning there were increases in violations. However, the restaurant received a grade of A in 2017. Note that you can hover on the data point to see the grade and related violation code. 
