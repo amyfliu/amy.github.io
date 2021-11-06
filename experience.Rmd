@@ -8,18 +8,17 @@ output:
 
 ### Academic Background
 Columbia University Mailman School of Public Health  
-Master of Public Health with a concentration in Biostatistics
-Certificate: Infectious Disease Epidemiology 
+Master of Public Health with a concentration in Biostatistics  
+Certificate: Infectious Disease Epidemiology  
 
 University of Florida  
-Major: Biology
-Minors: Statistics, Computer Science 
+Major: Biology  
+Minors: Statistics, Computer Science  
 
 ### Current Projects
-Research Associate - Axle Informatics
+Research Associate - Axle Informatics  
 
-
-Research Assistant - Columbia University Irving Medical Center
+Research Assistant - Columbia University Irving Medical Center  
 
 ### Certifications
 SAS Certified Specialist: Base Programming Using SAS 9.4
