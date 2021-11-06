@@ -1,0 +1,65 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source: embed
+---
+
+```{r, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+```
+
+```{r}
+data(rest_inspec)
+
+nyc_rest_inspect = 
+  rest_inspec %>% 
+  filter(grade %in% c("A","B","C")) %>% 
+  select(boro, critical_flag, score, zipcode, grade, dba) %>% 
+  drop_na(score, grade) %>% 
+  sample_n(5000) #takes random sample of 1000
+```
+
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A - Distribution of inspection scores for each borough (lower score = higher grade)
+```{r}
+nyc_rest_inspect %>% 
+  plot_ly(
+    x = ~boro, y = ~score, type = "box", color = ~boro)
+```
+
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B - Rate of receiving a critical flag for each borough
+```{r}
+nyc_rest_inspect %>% 
+  group_by(boro) %>% 
+  summarize(rate_critical = sum(critical_flag == "Critical") / n()) %>% 
+  plot_ly(
+    x = ~boro, y = ~rate_critical, type = "bar", color = ~boro, colors = "viridis"
+  )
+```
+
+
+### Chart C - Score and grade for 'Joe's Shanghai' across time
+```{r}
+rest_inspec %>% 
+  filter(camis == 40548766) %>% 
+  drop_na(score, grade) %>%
+  mutate(text_label = str_c("Grade: ", grade, 
+                            "\nViolation code: ", violation_code)) %>% 
+  plot_ly(
+    y = ~score, x = ~inspection_date, type = "scatter", mode = "markers",
+    text = ~text_label
+  )
+```
